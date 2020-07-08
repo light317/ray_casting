@@ -48,17 +48,18 @@ class Display:
                 if event.type == pygame.QUIT:
                     self.stop = True
                     
-                    #get the mouse position
-                    if event.type == pygame.MOUSEMOTION:
-                        pos = event.pos
-                        self.particle.pos[0] = pos[0]
-                        self.particle.pos[1] = pos[1]
-                    
+            #get the mouse position
+            
+            pos = pygame.mouse.get_pos()
+            self.particle.pos[0] = pos[0]
+            self.particle.pos[1] = pos[1]    
+            
             self.particle.look(self.screen, self.walls)
             self.Draw()
             self.clock.tick(100)
             pygame.display.update()
             
+        pygame.quit()
             
 if __name__ == '__main__':
     a = Display()

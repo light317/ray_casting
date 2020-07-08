@@ -1,6 +1,6 @@
 import pygame
 from numpy import array, deg2rad, linalg
-from ray import *
+from rayx import *
 
 class Particle:
     def __init__(self):
@@ -14,8 +14,8 @@ class Particle:
             
     def look(self, screen, walls):
         self.rays = []
-        for i in range(0, 360, 5):
-            self.rays.append(Ray(self.pos[0], self.pos[1], deg2rad(i)))
+        for i in range(0, 360, 3):
+            self.rays.append(Rayx(self.pos[0], self.pos[1], deg2rad(i)))
             
         for ray in self.rays:
             closest = 1000000
@@ -30,5 +30,5 @@ class Particle:
                         closest = dis
                         closest_point = pt
                         
-            if closest_point is not None:
-                pygame.draw.line(screen, (255, 255, 255), self.pos, array(closest_point, int))
+                if closest_point is not None:
+                    pygame.draw.line(screen, (255, 255, 255), self.pos, array(closest_point, int))
